@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6cadd819a6415b190ae2704ced6e6c8b",
+    "content-hash": "b9a4690907f5ae0dbb1671705447ac02",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5359,6 +5359,76 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "yepwoo/laragine",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yepwoo/laragine.git",
+                "reference": "755f376e2598ea6e4b50ecef79506d91edefbbfb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yepwoo/laragine/zipball/755f376e2598ea6e4b50ecef79506d91edefbbfb",
+                "reference": "755f376e2598ea6e4b50ecef79506d91edefbbfb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^8.0",
+                "mockery/mockery": "^1.4.2",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^8.5.8|^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yepwoo\\Laragine\\ModuleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yepwoo\\Laragine\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahmood Ahmad",
+                    "email": "mahmood073@gmail.com"
+                },
+                {
+                    "name": "Abdlrahman Saber",
+                    "email": "abdlrahmansaber652@gmail.com"
+                }
+            ],
+            "description": "Laravel Engine: Develop Faster And Cleaner!",
+            "keywords": [
+                "clean code",
+                "fast",
+                "faster",
+                "laragine",
+                "laravel",
+                "module",
+                "modules",
+                "yepwoo"
+            ],
+            "support": {
+                "issues": "https://github.com/yepwoo/laragine/issues",
+                "source": "https://github.com/yepwoo/laragine"
+            },
+            "time": "2021-10-03T19:06:10+00:00"
         }
     ],
     "packages-dev": [
