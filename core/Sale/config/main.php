@@ -80,4 +80,57 @@ return [
         ]
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Offers
+    |--------------------------------------------------------------------------
+    |
+    | Some special offers, which affect the pricing.
+    |
+    */
+
+    'offers' => [
+        [
+            'name'      => '10% off shoes',
+            'condition' => [
+                'type'    => 'item_in',
+                'items'   => ['Shoes'],
+                'min_qty' => 1
+            ],
+            'discount' => [
+                'apply' => 'subtotal',
+                'type'  => 'percentage',
+                'value' => 10
+            ]
+        ],
+        [
+            'name'      => '50% off jacket',
+            'condition' => [
+                'type'    => 'item_in',
+                'items'   => ['T-shirt', 'Blouse'],
+                'min_qty' => 2
+            ],
+            'discount' => [
+                'apply' => 'items',
+                'type'  => 'percentage',
+                'value' => 50,
+                'items' => ['Jacket']
+            ]
+        ],
+        [
+            'name'      => '$10 of shipping',
+            'condition' => [
+                'type'    => 'item_in',
+                'items'   => ['*'],
+                'min_qty' => 2
+            ],
+            'discount' => [
+                'apply'         => 'shipping',
+                'type'          => 'fixed',
+                'value'         => 10,
+                'capped_amount' => 10
+            ]
+        ]
+    ],
+
 ];
