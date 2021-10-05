@@ -109,9 +109,7 @@ class Invoice
         foreach ($this->config['offers'] as $offer) {
             $min_qty = 0;
             foreach ($products as $product) {
-
                 $condition = $offer['condition'];
-
                 if ($condition['type'] == 'item_in') {
                     if (in_array('*', $condition['items']) || in_array($product, $condition['items'])) {
                         $min_qty += 1;
