@@ -43,18 +43,52 @@ class Invoice
     {
         foreach ($products as $product) {
             $item = $this->config['items']['types'][$product];
-            $this->data['subtotal'] += $item['price'];
-
-            // shipping
-            $shipping_rates = $this->config['shipping_rates'];
-            $weight_in_gram = $item['weight'] * 1000;
-            $shipping       =  $shipping_rates['countries'][$item['shipped_from']] * $weight_in_gram / $shipping_rates['amount'];
-            $this->data['shipping'] = $this->data['shipping'] == 0 ? $shipping : $this->data['shipping'] + $shipping;
+            $this->setSubtotal($item['price']);
+            $this->setShipping($item);
         }
 
-        // taxes
+        $this->setTaxes();
+
+        return $this->data;
+    }
+
+    /**
+     * set the subtotal
+     * 
+     * @param  float $value
+     * @return void
+     */
+    protected function setSubtotal($value)
+    {
+        $this->data['subtotal'] += $value;
+    }
+
+    /**
+     * set the shipping
+     * 
+     * @param  array $item
+     * @return void
+     */
+    protected function setShipping($item)
+    {
+        $shipping_rates         = $this->config['shipping_rates'];
+        /**
+         * @todo get weight dynamically and convert it to the unit from the value in the config
+         */
+        $weight_in_gram         = $item['weight'] * 1000;
+        $shipping               =  $shipping_rates['countries'][$item['shipped_from']] * $weight_in_gram / $shipping_rates['amount'];
+        $this->data['shipping'] = $this->data['shipping'] == 0 ? $shipping : $this->data['shipping'] + $shipping;
+    }
+
+    /**
+     * set the taxes
+     * 
+     * @return void
+     */
+    protected function setTaxes()
+    {
         $taxes = 0;
-        foreach($this->config['items']['taxes'] as $tax) {
+        foreach ($this->config['items']['taxes'] as $tax) {
             $tax_item = $this->config['taxes'][$tax];
 
             $tax_value = 0;
@@ -70,7 +104,5 @@ class Invoice
             $this->data[$tax_item['name']] = $tax_value;
             $taxes += $this->data[$tax_item['name']];
         }
-
-        return $this->data;
     }
 }
