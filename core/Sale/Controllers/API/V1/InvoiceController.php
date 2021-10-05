@@ -3,19 +3,31 @@
 namespace Core\Sale\Controllers\API\V1;
 
 use Core\Sale\Requests\InvoiceRequest as FormRequest;
-use Core\Sale\Models\Invoice as Model;
-use Core\Sale\Resources\InvoiceResource as Resource;
 
 class InvoiceController extends \Core\Base\Controllers\API\Controller
 {
     /**
      * Init.
-     * @param FormRequest $request
-     * @param Model $model
-     * @param string $resource
+     * 
+     * @param  FormRequest $request
+     * @return void
      */
-    public function __construct(FormRequest $request, Model $model, $resource = Resource::class)
+    public function __construct(FormRequest $request)
     {
-        parent::__construct($request, $model, $resource);
+        $this->request  = $request;
+    }
+
+    /**
+     * price a cart of products and display a total detailed invoice
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function invoice()
+    {
+        return $this->sendResponse(
+            ['50% from 1000' => get_percentage_value(1000, 50), 'products' => $this->request->products],
+            'successfully generated.',
+            true,
+            200);
     }
 }

@@ -1,6 +1,8 @@
 {
   "attributes": {
-
+    "product": {
+      "type": "string"
+    }
   },
   "relations": {
 
