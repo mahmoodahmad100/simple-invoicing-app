@@ -48,6 +48,8 @@ class Invoice
         }
 
         $this->setTaxes();
+        $this->setOffers();
+        $this->setTotal();
 
         return $this->data;
     }
@@ -87,7 +89,7 @@ class Invoice
      */
     protected function setTaxes()
     {
-        $taxes = 0;
+        $this->data['taxes'] = 0;
         foreach ($this->config['items']['taxes'] as $tax) {
             $tax_item = $this->config['taxes'][$tax];
 
@@ -102,7 +104,33 @@ class Invoice
             }
 
             $this->data[$tax_item['name']] = $tax_value;
-            $taxes += $this->data[$tax_item['name']];
+            $this->data['taxes']           += $this->data[$tax_item['name']];
         }
+    }
+
+    /**
+     * set the offers
+     * 
+     * @return void
+     */
+    protected function setOffers()
+    {
+        
+    }
+
+    /**
+     * set the total
+     * 
+     * @return void
+     */
+    protected function setTotal()
+    {
+        $this->data['total'] = $this->data['subtotal'] + $this->data['shipping'] + $this->data['taxes'];
+        
+        if (isset($this->data['discounts'])) {
+            $this->data['total'] -= $this->data['discounts'];
+        }
+
+        unset($this->data['taxes']);
     }
 }
