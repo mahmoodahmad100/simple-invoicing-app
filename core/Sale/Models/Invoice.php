@@ -50,7 +50,7 @@ class Invoice
         }
 
         $this->setTaxes();
-        $this->setOffers();
+        $this->setOffers($products);
         $this->setTotal();
 
         return $this->data;
@@ -92,18 +92,40 @@ class Invoice
         foreach ($this->config['items']['taxes'] as $tax) {
             $tax_item = $this->config['taxes'][$tax];
             $this->data[$tax_item['name']] = $this->handleApply($tax_item);
-            $this->data['taxes']           += $this->data[$tax_item['name']];
+            $this->data['taxes']          += $this->data[$tax_item['name']];
         }
     }
 
     /**
      * set the offers
      * 
+     * @param  array $products
      * @return void
      */
-    protected function setOffers()
+    protected function setOffers(array $products)
     {
+        $this->data['discounts'] = ['total' => 0];
 
+        foreach ($this->config['offers'] as $offer) {
+            $min_qty    = 0;
+            $applicable = false;
+            foreach ($products as $product) {
+
+                $condition = $offer['condition'];
+
+                if ($condition['type'] == 'item_in') {
+                    if (in_array('*', $condition['items']) || in_array($product, $condition['items'])) {
+                        $min_qty += 1;
+
+                        if ($condition['min_qty'] == $min_qty) {
+                            $this->data['discounts'][$offer['name']] = $this->handleApply($offer['discount'], 'decrease');
+                            $this->data['discounts']['total']       += $this->data['discounts'][$offer['name']];
+                        }
+                    }
+                }
+
+            }
+        }
     }
 
     /**
@@ -115,8 +137,14 @@ class Invoice
     {
         $this->data['total'] = $this->data['subtotal'] + $this->data['shipping'] + $this->data['taxes'];
         
-        if (isset($this->data['discounts'])) {
-            $this->data['total'] += $this->data['discounts'];
+        if ($this->data['discounts']['total'] < 0) {
+            $this->data['total'] += $this->data['discounts']['total'];
+        }
+
+        if ($this->data['discounts']['total'] < 0) {
+            unset($this->data['discounts']['total']);
+        } else {
+            unset($this->data['discounts']);
         }
 
         unset($this->data['taxes']);
@@ -125,9 +153,11 @@ class Invoice
     /**
      * handle the apply
      * 
+     * @param  array  $item
+     * @param  string $operation
      * @return float
      */
-    protected function handleApply($item)
+    protected function handleApply($item, $operation = 'increase')
     {
         $data = [
             'type'  => $item['type'],
@@ -139,12 +169,19 @@ class Invoice
                 $data['number'] = $this->data['subtotal'];
             }
 
-            if ($item['apply'] == 'item') {
-                $data['number'] = $this->config['items']['types'][$item['product']]['price'];
-            } 
+            if ($item['apply'] == 'items') {
+                $data['number'] = 0;
+                foreach ($item['items'] as $product) {
+                    $data['number'] += $this->config['items']['types'][$product]['price'];
+                }
+            }
+
+            if ($item['apply'] == 'subtotal') {
+                $data['number'] = $this->data['subtotal'];
+            }
             
         }
 
-        return Handle::fire('calculate', $data);
+        return Handle::fire('calculate', $data, $operation);
     }
 }

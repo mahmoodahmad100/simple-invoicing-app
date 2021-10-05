@@ -99,9 +99,10 @@ return [
                 'min_qty' => 1
             ],
             'discount' => [
-                'apply' => 'subtotal',
+                'apply' => 'items',
                 'type'  => 'percentage',
-                'value' => 10
+                'value' => 10,
+                'items' => ['Shoes']
             ]
         ],
         [

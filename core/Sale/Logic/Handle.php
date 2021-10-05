@@ -9,6 +9,7 @@ class Handle
      * 
      * @param  string $type
      * @param  array  $data
+     * @param  string $operation
      * @return float
      * @throws \Exception
      */
