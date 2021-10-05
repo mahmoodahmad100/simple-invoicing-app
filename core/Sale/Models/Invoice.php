@@ -2,6 +2,8 @@
 
 namespace Core\Sale\Models;
 
+use Core\Sale\Logic\Handle;
+
 class Invoice
 {
     /**
@@ -73,12 +75,9 @@ class Invoice
      */
     protected function setShipping($item)
     {
-        $shipping_rates         = $this->config['shipping_rates'];
-        /**
-         * @todo get weight dynamically and convert it to the unit from the value in the config
-         */
-        $weight_in_gram         = $item['weight'] * 1000;
-        $shipping               =  $shipping_rates['countries'][$item['shipped_from']] * $weight_in_gram / $shipping_rates['amount'];
+        $rates                  = $this->config['shipping_rates'];
+        $weight                 = uom_converter($item['weight'], $this->config['items']['uom'], $rates['uom']);
+        $shipping               =  $rates['countries'][$item['shipped_from']] * $weight / $rates['amount'];
         $this->data['shipping'] = $this->data['shipping'] == 0 ? $shipping : $this->data['shipping'] + $shipping;
     }
 
@@ -92,18 +91,7 @@ class Invoice
         $this->data['taxes'] = 0;
         foreach ($this->config['items']['taxes'] as $tax) {
             $tax_item = $this->config['taxes'][$tax];
-
-            $tax_value = 0;
-
-            if ($tax_item['apply'] == 'item') {
-                // some stuff
-            }
-
-            if ($tax_item['apply'] == 'subtotal') {
-                $tax_value = $tax_item['type'] == 'percentage' ? get_percentage_value($this->data['subtotal'], $tax_item['value']) : $tax_item['value'];
-            }
-
-            $this->data[$tax_item['name']] = $tax_value;
+            $this->data[$tax_item['name']] = $this->handleApply($tax_item);
             $this->data['taxes']           += $this->data[$tax_item['name']];
         }
     }
@@ -115,7 +103,7 @@ class Invoice
      */
     protected function setOffers()
     {
-        
+
     }
 
     /**
@@ -128,9 +116,35 @@ class Invoice
         $this->data['total'] = $this->data['subtotal'] + $this->data['shipping'] + $this->data['taxes'];
         
         if (isset($this->data['discounts'])) {
-            $this->data['total'] -= $this->data['discounts'];
+            $this->data['total'] += $this->data['discounts'];
         }
 
         unset($this->data['taxes']);
+    }
+
+    /**
+     * handle the apply
+     * 
+     * @return float
+     */
+    protected function handleApply($item)
+    {
+        $data = [
+            'type'  => $item['type'],
+            'value' => $item['value'],
+        ];
+
+        if ($item['type'] == 'percentage') {
+            if ($item['apply'] == 'subtotal') {
+                $data['number'] = $this->data['subtotal'];
+            }
+
+            if ($item['apply'] == 'item') {
+                $data['number'] = $this->config['items']['types'][$item['product']]['price'];
+            } 
+            
+        }
+
+        return Handle::fire('calculate', $data);
     }
 }
