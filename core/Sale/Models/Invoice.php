@@ -107,8 +107,7 @@ class Invoice
         $this->data['discounts'] = ['total' => 0];
 
         foreach ($this->config['offers'] as $offer) {
-            $min_qty    = 0;
-            $applicable = false;
+            $min_qty = 0;
             foreach ($products as $product) {
 
                 $condition = $offer['condition'];
@@ -182,6 +181,12 @@ class Invoice
             
         }
 
-        return Handle::fire('calculate', $data, $operation);
+        $value = Handle::fire('calculate', $data, $operation);
+
+        if(isset($item['capped_amount']) && $value > $item['capped_amount']) {
+            $value = $item['capped_amount'];
+        }
+
+        return $value;
     }
 }
