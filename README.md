@@ -1,5 +1,5 @@
 ### Description
-An app that can price a cart of products from different countries, accept multiple products, combine offers, and display a total detailed invoice in USD which is developed based on REST API and this app focuses on back-end.
+An app that can price a cart of products from different countries, accept multiple products, combine offers, and display a total detailed invoice in USD which is developed based on REST API (this app focuses on back-end).
 
 ### Technical Reasoning
 The app is built on Laravel and [Laragine](https://github.com/yepwoo/laragine) due to the following reasons:
