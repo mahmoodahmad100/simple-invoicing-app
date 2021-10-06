@@ -12,8 +12,13 @@ The app is built on Laravel and [Laragine](https://github.com/yepwoo/laragine) d
 
 The app also implements best practices like applying `SOLID` principles and `OOD` apart from that the `Strategy` design pattern is used due to having switch cases (many if for example).
 
-### Trade-offs
+Also there is no `DB` needed to run the app as it's based on the `configurations`.
 
+### Trade-offs
+if I was to spend additional time on the project I would do the following:
+* Use `Strategy` design pattern in the `offers/discounts` here `core/Sale/Models/Invoice.php`
+* Make the `capped_amount` applicable to both negative and positive values (currently it's working with negative values) in line `184` in `core/Sale/Models/Invoice.php`
+* Reimplement `uom_converter` function and make it based on `OOP` in `core/Sale/helpers.php`
 
 ### Getting started:
 * You do not have a `.env` file in the project root directory so copy `.env.example` and save it as `.env`
