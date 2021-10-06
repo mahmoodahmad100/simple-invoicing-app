@@ -1,7 +1,7 @@
 ### Getting started:
 * You do not have a `.env` file in the project root directory so copy `.env.example` and save it as `.env`
 
-* In `.env` file update `LOG_SLACK_WEBHOOK_URL` with your slack incoming webhook to send real-time errors that occur in the system. if you don't have one you can use this one `https://hooks.slack.com/services/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` and you can checkout slack by joining from [here](https://join.slack.com/t/newworkspace-kke8575/shared_invite/zt-wompvw7a-QKR3icuaTDbWOPy_UxKFGQ)
+* In `.env` file update `LOG_SLACK_WEBHOOK_URL` with your slack incoming webhook to send real-time errors that occurs in the system. if you don't have one you can checkout slack by joining from [here](https://join.slack.com/t/newworkspace-kke8575/shared_invite/zt-wompvw7a-QKR3icuaTDbWOPy_UxKFGQ) and then in `general` channel you can find a message contains the incoming webhook
 
 * Open the terminal and navigate to the project directory and run `composer install`
 
