@@ -1,3 +1,20 @@
+### Description
+An app that can price a cart of products from different countries, accept multiple products, combine offers, and display a total detailed invoice in USD which is developed based on REST API and this app focuses on back-end.
+
+### Technical Reasoning
+The app is built on Laravel and [Laragine](https://github.com/yepwoo/laragine) due to the following reasons:
+* A module based, meaning that you can separate all related stuff together
+* Automatic generation of Unit Tests!
+* One clear response for the client side (for example: API response)
+* Error handling
+* Easy to configure channels to send the logs (for example error logs) to channels like `slack`
+* It's based on `MVC` **design pattern**
+
+The app also implements best practices like applying `SOLID` principles and `OOD` apart from that the `Strategy` design pattern is used due to having switch cases (many if for example).
+
+### Trade-offs
+
+
 ### Getting started:
 * You do not have a `.env` file in the project root directory so copy `.env.example` and save it as `.env`
 
