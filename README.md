@@ -1,5 +1,5 @@
 ### Description
-An app that can price a cart of products from different countries, accept multiple products, combine offers, and display a total detailed invoice in USD by default (you can change it from the configuration from here `core/Sale/config/main.php`) which is developed based on REST API (this app focuses on back-end).
+An app that can price a cart of products from different countries, accept multiple products, combine offers, and display a total detailed invoice in USD by default which is developed based on REST API (this app focuses on back-end).
 
 ### Technical Reasoning
 The app is built on Laravel and [Laragine](https://github.com/yepwoo/laragine) due to the following reasons:
@@ -12,7 +12,7 @@ The app is built on Laravel and [Laragine](https://github.com/yepwoo/laragine) d
 
 The app also implements best practices like applying `SOLID` principles and `OOD` apart from that the `Strategy` design pattern is used due to having switch cases (many if for example).
 
-Also there is no `DB` needed to run the app as it's based on the `configurations`.
+Also there is no `DB` needed to run the app as the solution depends on the `configurations` (you can change the configurations from here `core/Sale/config/main.php`)
 
 ### Trade-offs
 if I was to spend additional time on the project I would do the following:
