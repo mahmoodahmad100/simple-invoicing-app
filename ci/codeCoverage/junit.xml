@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="7" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="57.381118">
-    <testsuite name="Unit" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="17.498364">
-      <testsuite name="Core\Base\Tests\Unit\WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="17.498364">
-        <testcase name="testNamespace" class="Core\Base\Tests\Unit\WebControllerTest" classname="Core.Base.Tests.Unit.WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" line="47" assertions="1" time="2.882301"/>
-        <testcase name="testDirectory" class="Core\Base\Tests\Unit\WebControllerTest" classname="Core.Base.Tests.Unit.WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" line="60" assertions="1" time="7.355487"/>
-        <testcase name="testPath" class="Core\Base\Tests\Unit\WebControllerTest" classname="Core.Base.Tests.Unit.WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" line="76" assertions="1" time="7.260576"/>
+  <testsuite name="" tests="7" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="52.117352">
+    <testsuite name="Unit" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="16.490313">
+      <testsuite name="Core\Base\Tests\Unit\WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="16.490313">
+        <testcase name="testNamespace" class="Core\Base\Tests\Unit\WebControllerTest" classname="Core.Base.Tests.Unit.WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" line="47" assertions="1" time="2.937612"/>
+        <testcase name="testDirectory" class="Core\Base\Tests\Unit\WebControllerTest" classname="Core.Base.Tests.Unit.WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" line="60" assertions="1" time="6.813645"/>
+        <testcase name="testPath" class="Core\Base\Tests\Unit\WebControllerTest" classname="Core.Base.Tests.Unit.WebControllerTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Base\Tests\Unit\WebControllerTest.php" line="76" assertions="1" time="6.739056"/>
       </testsuite>
     </testsuite>
-    <testsuite name="Feature" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="39.882754">
-      <testsuite name="Core\Sale\Tests\Feature\InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="39.882754">
-        <testcase name="testItShouldReturnInvoiceWithDiscounts" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="37" assertions="2" time="9.250779"/>
-        <testcase name="testItShouldReturnInvoiceWithoutDiscounts" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="70" assertions="2" time="10.509328"/>
-        <testcase name="testItShouldInvalidateNotExistProducts" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="94" assertions="2" time="9.472417"/>
-        <testcase name="testItShouldReturnInvoiceWithDiscountsCapped" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="115" assertions="2" time="10.650230"/>
+    <testsuite name="Feature" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="35.627039">
+      <testsuite name="Core\Sale\Tests\Feature\InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="35.627039">
+        <testcase name="testItShouldReturnInvoiceWithDiscounts" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="37" assertions="2" time="8.157558"/>
+        <testcase name="testItShouldReturnInvoiceWithoutDiscounts" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="70" assertions="2" time="9.076208"/>
+        <testcase name="testItShouldInvalidateNotExistProducts" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="94" assertions="2" time="9.395399"/>
+        <testcase name="testItShouldReturnInvoiceWithDiscountsCapped" class="Core\Sale\Tests\Feature\InvoiceTest" classname="Core.Sale.Tests.Feature.InvoiceTest" file="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Tests\Feature\InvoiceTest.php" line="115" assertions="2" time="8.997874"/>
       </testsuite>
     </testsuite>
   </testsuite>

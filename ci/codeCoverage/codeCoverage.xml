@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1633484467">
-  <project timestamp="1633484467">
+<coverage generated="1633486078">
+  <project timestamp="1633486078">
     <file name="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Controllers\API\V1\InvoiceController.php">
       <class name="Core\Sale\Controllers\API\V1\InvoiceController" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
@@ -16,12 +16,6 @@
       <line num="33" type="stmt" count="3"/>
       <line num="34" type="stmt" count="3"/>
       <metrics loc="37" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
-    </file>
-    <file name="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Controllers\Web\InvoiceController.php">
-      <class name="Core\Sale\Controllers\Web\InvoiceController" namespace="global">
-        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </class>
-      <metrics loc="8" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="C:\xampp-7.4\htdocs\edfa3ly\simple-invoicing-app\core\Sale\Interfaces\InvoiceInterface.php">
       <line num="8" type="stmt" count="1"/>
@@ -191,6 +185,6 @@
       <line num="15" type="stmt" count="7"/>
       <metrics loc="194" ncloc="154" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="1" coveredelements="1"/>
     </file>
-    <metrics files="9" loc="687" ncloc="522" classes="6" methods="19" coveredmethods="18" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="119" elements="139" coveredelements="137"/>
+    <metrics files="8" loc="679" ncloc="514" classes="6" methods="19" coveredmethods="18" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="119" elements="139" coveredelements="137"/>
   </project>
 </coverage>

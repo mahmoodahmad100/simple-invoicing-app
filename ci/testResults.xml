@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests>
-  <test className="Core\Base\Tests\Unit\WebControllerTest" methodName="testNamespace" prettifiedClassName="Web Controller (Core\Base\Tests\Unit\WebController)" prettifiedMethodName="Namespace" status="0" time="2.882301416" size="-1" groups="default">
+  <test className="Core\Base\Tests\Unit\WebControllerTest" methodName="testNamespace" prettifiedClassName="Web Controller (Core\Base\Tests\Unit\WebController)" prettifiedMethodName="Namespace" status="0" time="2.937611812" size="-1" groups="default">
     <group name="default"/>
     <testDouble type="Core\Base\Controllers\Web\Controller"/>
   </test>
-  <test className="Core\Base\Tests\Unit\WebControllerTest" methodName="testDirectory" prettifiedClassName="Web Controller (Core\Base\Tests\Unit\WebController)" prettifiedMethodName="Directory" status="0" time="7.355487001" size="-1" groups="default">
+  <test className="Core\Base\Tests\Unit\WebControllerTest" methodName="testDirectory" prettifiedClassName="Web Controller (Core\Base\Tests\Unit\WebController)" prettifiedMethodName="Directory" status="0" time="6.813645291" size="-1" groups="default">
     <group name="default"/>
     <testDouble type="Core\Base\Controllers\Web\Controller"/>
   </test>
-  <test className="Core\Base\Tests\Unit\WebControllerTest" methodName="testPath" prettifiedClassName="Web Controller (Core\Base\Tests\Unit\WebController)" prettifiedMethodName="Path" status="0" time="7.26057603" size="-1" groups="default">
+  <test className="Core\Base\Tests\Unit\WebControllerTest" methodName="testPath" prettifiedClassName="Web Controller (Core\Base\Tests\Unit\WebController)" prettifiedMethodName="Path" status="0" time="6.739056155" size="-1" groups="default">
     <group name="default"/>
     <testDouble type="Core\Base\Controllers\Web\Controller"/>
   </test>
-  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldReturnInvoiceWithDiscounts" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should return invoice with discounts" status="0" time="9.250778702" size="-1" groups="default">
+  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldReturnInvoiceWithDiscounts" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should return invoice with discounts" status="0" time="8.157558049" size="-1" groups="default">
     <group name="default"/>
   </test>
-  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldReturnInvoiceWithoutDiscounts" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should return invoice without discounts" status="0" time="10.50932798" size="-1" groups="default">
+  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldReturnInvoiceWithoutDiscounts" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should return invoice without discounts" status="0" time="9.07620764" size="-1" groups="default">
     <group name="default"/>
   </test>
-  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldInvalidateNotExistProducts" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should invalidate not exist products" status="0" time="9.472417067" size="-1" groups="default">
+  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldInvalidateNotExistProducts" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should invalidate not exist products" status="0" time="9.395398967" size="-1" groups="default">
     <group name="default"/>
   </test>
-  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldReturnInvoiceWithDiscountsCapped" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should return invoice with discounts capped" status="0" time="10.650230269" size="-1" groups="default">
+  <test className="Core\Sale\Tests\Feature\InvoiceTest" methodName="testItShouldReturnInvoiceWithDiscountsCapped" prettifiedClassName="Invoice (Core\Sale\Tests\Feature\Invoice)" prettifiedMethodName="It should return invoice with discounts capped" status="0" time="8.997874278" size="-1" groups="default">
     <group name="default"/>
   </test>
 </tests>
