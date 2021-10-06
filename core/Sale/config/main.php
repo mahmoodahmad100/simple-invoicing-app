@@ -58,6 +58,16 @@ return [
                 'price'        => 79.99,
                 'shipped_from' => 'CN',
                 'weight'       => 1.3,
+            ],
+            'JustForUnitTests' => [
+                'price'        => 100.15,
+                'shipped_from' => 'US',
+                'weight'       => 1.3,
+            ],
+            'JustForUnitTests2' => [
+                'price'        => 100.15,
+                'shipped_from' => 'US',
+                'weight'       => 1.3,
             ]
         ]
     ],
@@ -130,6 +140,34 @@ return [
                 'apply'         => 'shipping',
                 'type'          => 'fixed',
                 'value'         => 10,
+                'capped_amount' => 10
+            ],
+        ],
+        [
+            'name'      => '$10 of shipping just for unit tests',
+            'condition' => [
+                'type'    => 'item_in',
+                'items'   => ['JustForUnitTests'],
+                'min_qty' => 1
+            ],
+            'discount' => [
+                'apply'         => 'shipping',
+                'type'          => 'fixed',
+                'value'         => 20,
+                'capped_amount' => 10
+            ],
+        ],
+        [
+            'name'      => '20% of shipping just for unit tests',
+            'condition' => [
+                'type'    => 'item_in',
+                'items'   => ['JustForUnitTests2'],
+                'min_qty' => 1
+            ],
+            'discount' => [
+                'apply'         => 'dummy',
+                'type'          => 'fixed',
+                'value'         => 20,
                 'capped_amount' => 10
             ]
         ]

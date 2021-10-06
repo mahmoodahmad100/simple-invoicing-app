@@ -90,4 +90,64 @@ class InvoiceTest extends TestCase
              ->assertStatus(200)
              ->assertJson($this->json);
     }
+
+    public function testItShouldInvalidateNotExistProducts()
+    {
+        $data = [
+            'products' => [
+                'T-shirt',
+                'Hello',
+                'Jacket'
+            ]
+        ];
+
+        unset($this->json['data']);
+        $this->json['is_success']  = false;
+        $this->json['status_code'] = 422;
+        $this->json['message']     = 'Hello is not found';
+        $this->json['errors']      = [];
+
+        $this->json('POST', $this->base_url, $data, $this->getHeaders())
+             ->assertStatus(422)
+             ->assertJson($this->json);
+    }
+
+    public function testItShouldReturnInvoiceWithDiscountsCapped()
+    {
+        $data = [
+            'products' => [
+                'JustForUnitTests'
+            ]
+        ];
+
+        $this->json['data'] = [
+            'currency' => [
+                'code'   => 'USD',
+                'symbol' => '$'
+            ],
+            'subtotal' => 100.15,
+            'shipping' => 26,
+            'VAT'      => 14.021,
+            'discounts' => [
+                '$10 of shipping just for unit tests' => -10
+            ],
+            'total'    => 130.171
+        ];
+
+        $this->json('POST', $this->base_url, $data, $this->getHeaders())
+             ->assertStatus(200)
+             ->assertJson($this->json);
+    }
+
+    // public function testItShouldReturnServerError()
+    // {
+    //     $data = [
+    //         'products' => [
+    //             'JustForUnitTests2'
+    //         ]
+    //     ];
+
+    //     $this->json('POST', $this->base_url, $data, $this->getHeaders())
+    //          ->assertStatus(500);
+    // }
 }

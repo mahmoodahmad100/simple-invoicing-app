@@ -181,8 +181,8 @@ class Invoice
 
         $value = Handle::fire('calculate', $data, $operation);
 
-        if(isset($item['capped_amount']) && $value > $item['capped_amount']) {
-            $value = $item['capped_amount'];
+        if(isset($item['capped_amount']) && -$value > $item['capped_amount']) {
+            $value = -$item['capped_amount'];
         }
 
         return $value;

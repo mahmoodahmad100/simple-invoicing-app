@@ -1,0 +1,11 @@
+Web Controller (Core\Base\Tests\Unit\WebController)
+ [x] Namespace
+ [x] Directory
+ [x] Path
+
+Invoice (Core\Sale\Tests\Feature\Invoice)
+ [x] It should return invoice with discounts
+ [x] It should return invoice without discounts
+ [x] It should invalidate not exist products
+ [x] It should return invoice with discounts capped
+
