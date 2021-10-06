@@ -3,7 +3,6 @@
 namespace Core\Sale\Tests\Feature;
 
 use Core\Base\Tests\TestCase;
-use Core\Sale\Models\Invoice as Model;
 
 class InvoiceTest extends TestCase
 {
@@ -13,13 +12,6 @@ class InvoiceTest extends TestCase
      * @var string
      */
     protected $base_url;
-
-    /**
-     * the data that will be sent in the request (create/update)
-     *
-     * @var array
-     */
-    protected $data;
 
     /**
      * the json response
@@ -38,99 +30,64 @@ class InvoiceTest extends TestCase
     {
         parent::setUp();
 
-        $this->base_url     = $this->getApiBaseUrl() . 'invoices/';
-        $this->data         = Model::factory()->make()->toArray();
-        $this->json         = $this->getJsonStructure();
-        $this->json['data'] = ['id'];
-
-        foreach ($this->data as $key => $value) {
-            $this->json['data'][] = $key;
-        }
+        $this->base_url = $this->getApiBaseUrl() . 'invoices/';
+        $this->json     = json_decode($this->sendResponse([], 'successfully generated.', true, 200), true);
     }
 
-    /**
-     * create new entry
-     *
-     * @return Model
-     */
-    protected function getNewEntry()
+    public function testItShouldReturnInvoiceWithDiscounts()
     {
-        return Model::factory()->create();
-    }
+        $data = [
+            'products' => [
+                'T-shirt',
+                'Blouse',
+                'Pants',
+                'Shoes',
+                'Jacket'
+            ]
+        ];
 
-    /**
-     * get the id
-     *
-     * @return int
-     */
-    protected function getId()
-    {
-        return $this->getNewEntry()->id;
-    }
+        $this->json['data'] = [
+            'currency' => [
+                'code'   => 'USD',
+                'symbol' => '$'
+            ],
+            'subtotal'  => 386.95,
+            'shipping'  => 110,
+            'VAT'       => 54.173,
+            'discounts' => [
+                '10% off shoes'   => -7.999,
+                '50% off jacket'  => -99.995,
+                '$10 of shipping' => -10
+            ],
+            'total' => 433.129
+        ];
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return void
-     */
-    public function testItShouldGetListingOfTheResource()
-    {
-        $this->getNewEntry();
-        $json              = $this->json;
-        $json['data']      = [];
-        $json['data']['*'] = $this->json['data'];
-
-        $this->json('GET', $this->base_url, [], $this->getHeaders())
+        $this->json('POST', $this->base_url, $data, $this->getHeaders())
              ->assertStatus(200)
-             ->assertJsonStructure($json);
+             ->assertJson($this->json);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return void
-     */
-    public function testItShouldStoreNewlyCreatedResource()
+    public function testItShouldReturnInvoiceWithoutDiscounts()
     {
-        $this->json('POST', $this->base_url, $this->data, $this->getHeaders())
-             ->assertStatus(201)
-             ->assertJsonStructure($this->json);
-    }
+        $data = [
+            'products' => [
+                'Jacket'
+            ]
+        ];
 
-    /**
-     * Display the specified resource.
-     *
-     * @return void
-     */
-    public function testItShouldGetSpecifiedResource()
-    {
-        $this->json('GET', $this->base_url . $this->getId(), [], $this->getHeaders())
+        $this->json['data'] = [
+            'currency' => [
+                'code'   => 'USD',
+                'symbol' => '$'
+            ],
+            'subtotal' => 199.99,
+            'shipping' => 44,
+            'VAT'      => 27.9986,
+            'total'    => 271.9886
+        ];
+
+        $this->json('POST', $this->base_url, $data, $this->getHeaders())
              ->assertStatus(200)
-             ->assertJsonStructure($this->json);
-    }
-
-    /**
-     * update a resource in storage.
-     *
-     * @return void
-     */
-    public function testItShouldUpdateSpecifiedResource()
-    {
-        $this->json('PUT', $this->base_url . $this->getId(), $this->data, $this->getHeaders())
-             ->assertStatus(200)
-             ->assertJsonStructure($this->json);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return void
-     */
-    public function testItShouldRemoveSpecifiedResource()
-    {
-        $this->json['data'] = [];
-        $this->json('DELETE', $this->base_url . $this->getId(), [], $this->getHeaders())
-             ->assertStatus(200)
-             ->assertJsonStructure($this->json);
+             ->assertJson($this->json);
     }
 }
